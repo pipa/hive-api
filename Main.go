@@ -11,6 +11,6 @@ func helloWorld(w http.ResponseWriter, r *http.Request) {
 
 func main() {
 	http.HandleFunc("/", helloWorld)
-	http.ListenAndServe(":8888", nil)
 	fmt.Println("GoLang server started on: 8888")
+	http.ListenAndServe(":8888", nil)
 }

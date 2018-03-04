@@ -1,7 +1,7 @@
-FROM golang:1.10.0
+FROM golang:1.10.0-alpine
 
-RUN mkdir /app
-ADD . /app/
 WORKDIR /app
+ADD . /app/
 
-RUN go build -o main .
+# RUN go build -o main .
+CMD ["go","run","/app/Main.go"]
