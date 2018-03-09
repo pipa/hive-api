@@ -1,7 +1,24 @@
-FROM golang:1.10.0-alpine
+# pipa/go dockerfile
+# alpine Go...
+# @date 03/2018
+FROM golang
 
-WORKDIR /app
-ADD . /app/
+ARG app_env
+ENV APP_ENV $app_env
+ENV WEBROOT /go/src/github.com/pipa/app
 
-# RUN go build -o main .
-CMD ["go","run","/app/Main.go"]
+WORKDIR ${WEBROOT}
+ADD ./app ${WEBROOT}
+
+RUN go get ./
+RUN go build
+
+CMD if [ ${APP_ENV} = production ]; \
+  then \
+  app; \
+  else \
+  go get github.com/pilu/fresh && \
+  fresh; \
+  fi
+
+EXPOSE 8888
