@@ -3,8 +3,11 @@
 # @date 03/2018
 FROM golang
 
+MAINTAINER Luis Matute
+
 ARG app_env
 ENV APP_ENV $app_env
+ENV PORT 8888
 ENV WEBROOT /go/src/github.com/pipa/app
 
 WORKDIR ${WEBROOT}
@@ -21,4 +24,4 @@ CMD if [ ${APP_ENV} = production ]; \
   fresh; \
   fi
 
-EXPOSE 8888
+EXPOSE ${PORT}
