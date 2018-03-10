@@ -12,7 +12,7 @@ import (
 	"github.com/kataras/iris"
 	"github.com/pipa/hive-api/controllers"
 	"github.com/pipa/hive-api/middlewares"
-	"github.com/pipa/hive-apimiddlewares/onErrorCode"
+	"github.com/pipa/hive-api/middlewares/onErrorCode"
 )
 
 var env = flag.String("env", "dev", "Environment in which the app will run")
