@@ -1,0 +1,13 @@
+# This file contains the default settings of the application.
+# Ading an iris.[env].yml, will merge(overriding) key/values
+# set in this file on the specified environment.
+
+TimeFormat: "Mon, Jan 02 2006 15:04:05 GMT"
+Charset: UTF-8
+EnableOptimizations: true
+
+Other:
+  ping: "pong"
+  env: "dev"
+  appName: "API"
+  host: ":8888"

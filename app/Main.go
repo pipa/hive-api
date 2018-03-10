@@ -1,16 +1,35 @@
 package main
 
 import (
-	"fmt"
-	"net/http"
+	"github.com/kataras/iris/core/host"
+	"github.com/pipa/hive-api/app/bootstrap"
 )
 
-func helloWorld(w http.ResponseWriter, r *http.Request) {
-	fmt.Fprintf(w, "Im the API!")
+// newApp is used to instantiate the new app
+// useful for testing purposes
+func newApp() *bootstrap.Bootstrapper {
+	app := bootstrap.New() // Creating new bootstrap for app
+
+	return app
 }
 
+// main is what all executables use to run the app
 func main() {
-	http.HandleFunc("/", helloWorld)
-	fmt.Println("GoLang server started on: 8888")
-	http.ListenAndServe(":8888", nil)
+	app := newApp()
+
+	app.ConfigureHost(configureHost)
+	app.Listen()
+}
+
+// configureHost gives us access to the host created by  `app.Run`,
+// they're being executed when application is ready to being served to the public.
+func configureHost(host *host.Supervisor) {
+	// Register a shutdown "event" callback
+	// host.RegisterOnShutdown(func() {})
+
+	// Register a "OnError" callback
+	// host.RegisterOnError
+
+	// Register a "OnServe" callback
+	// host.RegisterOnServe()
 }
