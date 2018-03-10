@@ -11,5 +11,6 @@ func Index(c context.Context) {
 		"foo": "bar",
 	}
 
+	c.Application().Logger().Debug("here")
 	c.JSON(jsend.Success(result))
 }

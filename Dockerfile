@@ -13,6 +13,7 @@ ENV WEBROOT /go/src/github.com/pipa/hive-api
 WORKDIR ${WEBROOT}
 ADD ./ ${WEBROOT}
 
+# RUN go get github.com/jinzhu/gorm
 RUN go get ./
 RUN go build
 

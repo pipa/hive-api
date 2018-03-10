@@ -2,16 +2,43 @@ package cockroach
 
 import (
 	"fmt"
+	"errors"
 
-	"github.com/jinzhu/gorm"
+	gnorm "github.com/jinzhu/gorm"
 	_ "github.com/jinzhu/gorm/dialects/postgres"
 	"github.com/kataras/iris"
+	"github.com/kataras/iris/context"
 )
+
+var (
+	db *gnorm.DB
+)
+
+type cockroachMiddleware struct {
+	config Config
+}
 
 // User is our model, which corresponds to the "accounts" database table.
 type User struct {
 	ID   int `gorm:"primary_key"`
 	name string
+}
+
+func New(cfg ...Config) context.Handler {
+	c := DefaultConfig()
+	crMdlw := &cockroachMiddleware{config: c}
+	var err error
+
+	// attempt to connect to the mysql database
+	dsn := fmt.Sprintf("user=%s password=%s dbname=%s port=%s host=%s sslmode=disable", dbUser, dbPass, dbName, dbPort, dbHost)
+	db, err : gorm.Open("postgres", dsn)
+
+	return crMdlw.ServeHTTP
+}
+
+// Serve serves the middleware
+func (crMdlw *cockroachMiddleware) ServeHTTP(ctx context.Context) {
+
 }
 
 // Serve creates the jwt-middleware and serves it
@@ -25,13 +52,14 @@ func Serve(ctx iris.Context) {
 
 	// build our data source url
 	dsn := fmt.Sprintf("user=%s password=%s dbname=%s port=%s host=%s sslmode=disable", dbUser, dbPass, dbName, dbPort, dbHost)
+	ctx.Application().Logger().Debugf("[mdlw-cockroach] dsn ", dsn)
 
-	// attempt to connect to the mysql database
-	db, err := gorm.Open("postgres", dsn)
+	
 
 	// if there was an issue opening the connection, send a 500 error
 	if err != nil {
-		ctx.Panic()
+		ctx.Application().Logger().Debugf("[mdlw-cockroach] Error while startup: ", err)
+		ctx.StopExecution()
 		return
 	}
 
