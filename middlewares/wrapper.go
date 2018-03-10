@@ -3,6 +3,7 @@ package middlewares
 import (
 	"github.com/kataras/iris"
 	// "github.com/pipa/hive-api/middlewares/jwtAuth"
+	"github.com/pipa/hive-api/middlewares/cockroach"
 	"github.com/pipa/hive-api/middlewares/recover"
 )
 
@@ -10,4 +11,5 @@ import (
 func Wrap(app *iris.Application) {
 	app.Use(recover.New())
 	// app.Use(jwtAuth.Serve)
+	app.Use(cockroach.Serve)
 }

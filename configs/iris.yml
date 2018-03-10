@@ -11,3 +11,5 @@ Other:
   env: "dev"
   appName: "API"
   host: ":8888"
+  db:
+    url: postgresql://root@localhost:26257/?sslmode=disable
