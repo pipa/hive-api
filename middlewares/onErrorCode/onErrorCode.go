@@ -2,7 +2,7 @@ package onErrorCode
 
 import (
 	"github.com/kataras/iris"
-	"github.com/pipa/hive-api/app/utils/jsend"
+	"github.com/pipa/hive-api/utils/jsend"
 )
 
 // OnAnyErrorCode handles any iris app error

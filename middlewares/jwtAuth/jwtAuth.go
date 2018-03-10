@@ -4,7 +4,7 @@ import (
 	jwt "github.com/dgrijalva/jwt-go"
 	jwtmiddleware "github.com/iris-contrib/middleware/jwt"
 	"github.com/kataras/iris"
-	"github.com/pipa/hive-api/app/utils/jsend"
+	"github.com/pipa/hive-api/utils/jsend"
 )
 
 // Serve creates the jwt-middleware and serves it

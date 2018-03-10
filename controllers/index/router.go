@@ -2,7 +2,7 @@ package indexController
 
 import (
 	"github.com/kataras/iris/core/router"
-	"github.com/pipa/hive-api/app/utils"
+	"github.com/pipa/hive-api/utils"
 )
 
 // EquipRouter will add the router and run the handler for each of the routes
@@ -18,7 +18,7 @@ func EquipRouter(app router.Party) {
 var routes = utils.Routes{
 	utils.Route{
 		Method:      "GET",
-		Pattern:     "/ip/{ip}",
+		Pattern:     "/",
 		HandlerFunc: Index,
 	},
 }

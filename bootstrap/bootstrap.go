@@ -10,9 +10,9 @@ import (
 
 	"github.com/imdario/mergo"
 	"github.com/kataras/iris"
-	"github.com/pipa/hive-api/app/controllers"
-	"github.com/pipa/hive-api/app/middlewares"
-	"github.com/pipa/hive-api/app/middlewares/onErrorCode"
+	"github.com/pipa/hive-api/controllers"
+	"github.com/pipa/hive-api/middlewares"
+	"github.com/pipa/hive-apimiddlewares/onErrorCode"
 )
 
 var env = flag.String("env", "dev", "Environment in which the app will run")

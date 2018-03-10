@@ -8,10 +8,10 @@ MAINTAINER Luis Matute
 ARG app_env
 ENV APP_ENV $app_env
 ENV PORT 8888
-ENV WEBROOT /go/src/github.com/pipa/app
+ENV WEBROOT /go/src/github.com/pipa/hive-api
 
 WORKDIR ${WEBROOT}
-ADD ./app ${WEBROOT}
+ADD ./ ${WEBROOT}
 
 RUN go get ./
 RUN go build

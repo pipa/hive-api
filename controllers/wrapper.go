@@ -2,7 +2,7 @@ package controllers
 
 import (
 	"github.com/kataras/iris"
-	IndexController "github.com/pipa/hive-api/app/controllers/index"
+	IndexController "github.com/pipa/hive-api/controllers/index"
 )
 
 // WithRouter wraps the iris app and calls the controllers in this directory

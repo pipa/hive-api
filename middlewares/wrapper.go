@@ -2,8 +2,8 @@ package middlewares
 
 import (
 	"github.com/kataras/iris"
-	"github.com/pipa/hive-api/app/middlewares/jwtAuth"
-	"github.com/pipa/hive-api/app/middlewares/recover"
+	"github.com/pipa/hive-api/middlewares/jwtAuth"
+	"github.com/pipa/hive-api/middlewares/recover"
 )
 
 // Wrap adds app middlewares to be used by every request
